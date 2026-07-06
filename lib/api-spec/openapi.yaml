@@ -3,13 +3,15 @@ info:
   # Do not change the title, if the title changes, the import paths will be broken
   title: Api
   version: 0.1.0
-  description: API specification
+  description: MoodBoard AI API specification
 servers:
   - url: /api
     description: Base API path
 tags:
   - name: health
     description: Health operations
+  - name: mood
+    description: Mood generation and history
 paths:
   /healthz:
     get:
@@ -24,6 +26,93 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/HealthStatus"
+
+  /generate:
+    post:
+      operationId: generateMood
+      tags: [mood]
+      summary: Generate mood world from text
+      description: Analyze a mood description and return a poem, playlist vibe, color palette, and animation settings
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/MoodInput"
+      responses:
+        "200":
+          description: Generated mood result
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MoodResult"
+        "400":
+          description: Invalid input
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+  /history:
+    get:
+      operationId: getMoodHistory
+      tags: [mood]
+      summary: Get mood history
+      description: Returns the last 20 mood entries
+      responses:
+        "200":
+          description: Mood history list
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/MoodEntry"
+
+  /history/{id}:
+    get:
+      operationId: getMoodEntry
+      tags: [mood]
+      summary: Get a single mood entry
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Mood entry
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MoodEntry"
+        "404":
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+    delete:
+      operationId: deleteMoodEntry
+      tags: [mood]
+      summary: Delete a mood entry
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "204":
+          description: Deleted successfully
+        "404":
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
 components:
   schemas:
     HealthStatus:
@@ -34,3 +123,145 @@ components:
       required:
         - status
 
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+      required:
+        - error
+
+    MoodInput:
+      type: object
+      required:
+        - mood
+      properties:
+        mood:
+          type: string
+          minLength: 1
+          maxLength: 500
+          description: The mood description entered by the user
+
+    ColorSwatch:
+      type: object
+      required:
+        - hex
+        - name
+      properties:
+        hex:
+          type: string
+          description: Hex color code e.g. "#1B4332"
+        name:
+          type: string
+          description: Descriptive name for the color
+
+    PlaylistVibe:
+      type: object
+      required:
+        - query
+        - genre
+        - youtubeUrl
+      properties:
+        query:
+          type: string
+          description: YouTube search query e.g. "lofi forest rain"
+        genre:
+          type: string
+          description: Genre label e.g. "Ambient"
+        youtubeUrl:
+          type: string
+          description: Full YouTube search URL
+
+    AnimationSettings:
+      type: object
+      required:
+        - particleCount
+        - speed
+        - glowIntensity
+        - fogOpacity
+        - windStrength
+        - colorTint
+      properties:
+        particleCount:
+          type: integer
+          description: Number of particles for the canvas animation
+        speed:
+          type: number
+          description: Particle movement speed multiplier
+        glowIntensity:
+          type: number
+          description: Particle glow intensity (0-1)
+        fogOpacity:
+          type: number
+          description: Background fog layer opacity (0-1)
+        windStrength:
+          type: number
+          description: Horizontal wind drift strength
+        colorTint:
+          type: string
+          description: Dominant hex color tint for particles
+
+    MoodResult:
+      type: object
+      required:
+        - id
+        - detectedMood
+        - poem
+        - playlist
+        - palette
+        - animation
+        - createdAt
+      properties:
+        id:
+          type: integer
+        detectedMood:
+          type: string
+          description: Detected mood category e.g. "calm", "nostalgic"
+        poem:
+          type: string
+          description: Original short poetic line generated for this mood
+        playlist:
+          $ref: "#/components/schemas/PlaylistVibe"
+        palette:
+          type: array
+          items:
+            $ref: "#/components/schemas/ColorSwatch"
+          description: Five color swatches matching this mood
+        animation:
+          $ref: "#/components/schemas/AnimationSettings"
+        createdAt:
+          type: string
+          format: date-time
+
+    MoodEntry:
+      type: object
+      required:
+        - id
+        - moodText
+        - detectedMood
+        - poem
+        - playlist
+        - palette
+        - animation
+        - createdAt
+      properties:
+        id:
+          type: integer
+        moodText:
+          type: string
+          description: Original user input
+        detectedMood:
+          type: string
+        poem:
+          type: string
+        playlist:
+          $ref: "#/components/schemas/PlaylistVibe"
+        palette:
+          type: array
+          items:
+            $ref: "#/components/schemas/ColorSwatch"
+        animation:
+          $ref: "#/components/schemas/AnimationSettings"
+        createdAt:
+          type: string
+          format: date-time

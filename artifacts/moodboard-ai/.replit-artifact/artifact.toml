@@ -1,0 +1,27 @@
+kind = "web"
+previewPath = "/"
+title = "MoodBoard AI"
+version = "1.0.0"
+id = "artifacts/moodboard-ai"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 26051
+
+[services.development]
+run = "pnpm --filter @workspace/moodboard-ai run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/moodboard-ai", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/moodboard-ai/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "26051"
+BASE_PATH = "/"

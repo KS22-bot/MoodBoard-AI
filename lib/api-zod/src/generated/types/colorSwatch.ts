@@ -6,6 +6,9 @@
  * OpenAPI spec version: 0.1.0
  */
 
-export interface HealthStatus {
-  status: string;
+export interface ColorSwatch {
+  /** Hex color code e.g. "#1B4332" */
+  hex: string;
+  /** Descriptive name for the color */
+  name: string;
 }

@@ -1,0 +1,404 @@
+Build a beautiful full-stack web application called **MoodBoard AI** using **HTML, CSS, JavaScript, and Node.js (Express)**.
+
+The application should feel premium, calming, and immersive, with a strong focus on animation, smooth transitions, and elegant UI design.
+
+## Theme
+
+Use the **Nature Reset** color palette throughout the application.
+
+```text
+Forest Green : #1B4332
+Moss Green   : #2D6A4F
+Sage         : #95D5B2
+Pale Mint    : #D8F3DC
+Ivory        : #FAF9F6
+```
+
+Create an animated mesh gradient background inspired by forests after rainfall. The colors should slowly blend and drift over time.
+
+---
+
+# Overall Style
+
+Design a modern glassmorphism interface.
+
+Requirements:
+
+* rounded corners (20-30px)
+* soft shadows
+* frosted glass cards
+* backdrop blur
+* subtle glowing highlights
+* elegant typography
+* floating animations
+* smooth hover effects
+* page fade-ins
+* premium micro-interactions
+* responsive on desktop, tablet, and mobile
+
+The website should feel alive instead of static.
+
+---
+
+# Landing Section
+
+Display
+
+# MoodBoard AI
+
+Subtitle:
+
+"Describe your feeling. Watch it become a living world."
+
+Below it place
+
+* large mood input
+* microphone button
+* Generate button
+
+Everything should animate into view.
+
+---
+
+# Mood Input
+
+Allow users to
+
+* type a feeling
+* or use voice input (Web Speech API)
+
+Examples shown as placeholders:
+
+* anxious before an exam
+* nostalgic for summer
+* peaceful after rain
+* chaotic but hopeful
+* excited for the future
+
+---
+
+# Backend (Node.js)
+
+Use Express.
+
+Create an endpoint
+
+POST
+
+/api/generate
+
+Receive
+
+```json
+{
+  "mood":"..."
+}
+```
+
+Return
+
+```json
+{
+  "poem":"",
+  "playlist":"",
+  "palette":[],
+  "animation":"..."
+}
+```
+
+Keep the backend modular so an AI API can easily be plugged in later.
+
+For now generate mock responses based on mood keywords.
+
+---
+
+# Mood Detection
+
+Create an internal mood engine.
+
+Detect moods like
+
+* calm
+* happy
+* sad
+* nostalgic
+* anxious
+* energetic
+* hopeful
+* lonely
+* romantic
+* creative
+
+Each mood should generate different:
+
+* palette tint
+* particle behaviour
+* animation speed
+* glow intensity
+* poem
+* playlist search
+
+---
+
+# Animated Background
+
+Use HTML Canvas.
+
+Generate floating particles.
+
+Different moods should affect:
+
+particle count
+
+particle size
+
+speed
+
+opacity
+
+drift
+
+wind
+
+glow
+
+blur
+
+Example
+
+Calm
+
+* slow movement
+* few particles
+* soft glow
+
+Energetic
+
+* many particles
+* faster movement
+* brighter glow
+
+Nostalgic
+
+* floating dust
+* warm haze
+* gentle waves
+
+Particles should react slightly to mouse movement.
+
+---
+
+# Result Card
+
+After clicking Generate show a beautiful glass card containing
+
+## Mood
+
+Detected mood
+
+## AI Poem
+
+Generate a short original poetic sentence.
+
+Examples:
+
+"The forest remembers every quiet step."
+
+"Even tired skies eventually bloom."
+
+"The wind carries tomorrow before we notice."
+
+Never repeat poems exactly.
+
+---
+
+## Playlist Vibe
+
+Display
+
+Spotify-style card
+
+Include
+
+Mood
+
+Genre
+
+Search button
+
+Instead of Spotify API, generate a YouTube search link such as
+
+```
+lofi forest rain
+ambient study
+hopeful indie
+peaceful piano
+```
+
+Clicking opens YouTube.
+
+---
+
+## Color Palette
+
+Display five color swatches.
+
+Each should show
+
+HEX code
+
+Copy button
+
+Hover animation
+
+Also include
+
+Copy Entire Palette
+
+---
+
+# Canvas Effects
+
+Background should include
+
+* animated fog
+* drifting leaves
+* glowing particles
+* moving light rays
+* soft vignette
+* subtle parallax
+
+Never let animations become distracting.
+
+---
+
+# Loading Animation
+
+When generating
+
+Display
+
+"Growing your mood..."
+
+Animate
+
+seed
+
+↓
+
+sprout
+
+↓
+
+tree
+
+using CSS animation.
+
+---
+
+# Sound Toggle
+
+Add an optional ambient sound toggle.
+
+Mock options
+
+* Forest
+* Rain
+* Wind
+* River
+
+Do not autoplay.
+
+---
+
+# Mood History
+
+Save previous moods using localStorage.
+
+Display the last five mood cards.
+
+Allow reopening previous moods.
+
+---
+
+# Export
+
+Allow exporting
+
+* mood card as PNG
+* palette as JSON
+* palette as TXT
+
+---
+
+# Accessibility
+
+Support
+
+* keyboard navigation
+* focus indicators
+* ARIA labels
+* reduced motion preference
+* high contrast text
+
+---
+
+# Performance
+
+Optimize Canvas rendering.
+
+Use requestAnimationFrame.
+
+Avoid unnecessary redraws.
+
+Lazy load assets where possible.
+
+---
+
+# Folder Structure
+
+```
+MoodBoardAI/
+
+server.js
+
+package.json
+
+/public
+
+    index.html
+
+    style.css
+
+    script.js
+
+    canvas.js
+
+    particles.js
+
+    moods.js
+
+/assets
+
+/routes
+```
+
+---
+
+# Code Quality
+
+Write clean, modular, well-commented code.
+
+Avoid duplicated logic.
+
+Separate animation logic, UI logic, and backend logic.
+
+Use ES6 modules where appropriate.
+
+---
+
+# Final Goal
+
+The finished website should feel like an interactive digital sanctuary.
+
+When someone enters a feeling, the page should transform into a personalized animated world with beautiful visuals, smooth motion, an original poetic response, a matching music vibe, and an elegant color palette. The experience should feel polished, calming, memorable, and portfolio-worthy.
