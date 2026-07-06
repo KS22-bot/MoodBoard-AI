@@ -3,6 +3,8 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import type { MoodResult } from '@workspace/api-client-react';
 import { Button } from '@/components/ui/button';
+import { AuraCard } from '@/components/AuraCard';
+import { ShareableCard } from '@/components/ShareableCard';
 
 interface MoodCardProps {
   data: MoodResult;
@@ -50,7 +52,7 @@ export function MoodCard({ data }: MoodCardProps) {
     <motion.div
       initial={{ opacity: 0, y: 40 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+      transition={{ type: 'spring', stiffness: 80, damping: 20 }}
       className="glass-card rounded-[2rem] p-8 md:p-10 w-full max-w-3xl mx-auto flex flex-col gap-10"
       id="mood-card-export"
     >
@@ -64,6 +66,8 @@ export function MoodCard({ data }: MoodCardProps) {
           "{data.poem}"
         </blockquote>
       </div>
+
+      <AuraCard mood={data.detectedMood} />
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
         {/* Color Palette */}
@@ -139,6 +143,8 @@ export function MoodCard({ data }: MoodCardProps) {
           <FileText className="w-4 h-4 mr-2" /> Export TXT
         </Button>
       </div>
+
+      <ShareableCard data={data} auraTitle="Wandering Spirit" />
     </motion.div>
   );
 }

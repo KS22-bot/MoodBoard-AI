@@ -1,0 +1,335 @@
+Update the existing **MoodBoard AI** project without changing its architecture, layout, or existing functionality. Preserve all current features and animations, but implement the following enhancements to create a darker, more atmospheric, premium experience.
+
+---
+
+# 1. Change the Entire Theme to "Melancholy"
+
+Replace every existing color with the following palette.
+
+```text
+Navy                #1B263B
+Dusty Blue          #415A77
+Lavender Gray       #778DA9
+Morning Mist        #D8E2F1
+Silver              #E0E1DD
+```
+
+The website should feel like:
+
+* rain against a window
+* quiet evenings
+* cloudy skies
+* cinematic blue hour
+* reflective but comforting
+
+Avoid making the UI depressing. It should feel peaceful, elegant, and emotionally warm.
+
+Update:
+
+* backgrounds
+* gradients
+* buttons
+* cards
+* borders
+* shadows
+* glows
+* icons
+* hover states
+* particle colors
+* loading animations
+* typography accents
+
+Create a slowly animated mesh gradient using only the colors above.
+
+---
+
+# 2. Dynamic Time of Day Adaptation
+
+Automatically detect the user's local time.
+
+The entire visual environment should subtly transform throughout the day.
+
+## Morning (5 AM to 11 AM)
+
+Mood
+
+Fresh
+
+Features
+
+* brighter mist
+* soft sunlight rays
+* warm blue highlights
+* gentle fog
+* slower particles
+
+---
+
+## Afternoon (11 AM to 5 PM)
+
+Mood
+
+Clear
+
+Features
+
+* brighter sky colors
+* slightly increased brightness
+* more visible floating particles
+* subtle cloud movement
+
+---
+
+## Evening (5 PM to 8 PM)
+
+Mood
+
+Golden Blue Hour
+
+Features
+
+* lavender glow
+* longer shadows
+* drifting leaves
+* cinematic lighting
+
+---
+
+## Night (8 PM to 5 AM)
+
+Mood
+
+Moonlit
+
+Features
+
+* darker navy background
+* stars
+* glowing particles
+* moonlight gradients
+* slower animations
+* occasional shooting stars
+
+The transition between time periods should be smooth and animated, never abrupt.
+
+---
+
+# 3. Aura Generator
+
+After generating the mood, display an elegant Aura Card.
+
+Generate five personality energies based on the detected mood.
+
+Example
+
+Peace
+
+82%
+
+Hope
+
+74%
+
+Creativity
+
+63%
+
+Energy
+
+41%
+
+Reflection
+
+90%
+
+Display these values as animated circular progress rings or glowing radial bars.
+
+Use smooth animations when they appear.
+
+The percentages should be generated dynamically from the detected mood.
+
+Also generate a short title.
+
+Examples
+
+"Quiet Soul"
+
+"Morning Dreamer"
+
+"Forest Heart"
+
+"Gentle Storm"
+
+"Wandering Light"
+
+Under the aura display, add one sentence explaining the aura.
+
+Example
+
+"Your thoughts are quiet, but your hope still shines through the clouds."
+
+---
+
+# 4. Shareable Mood Cards
+
+Create a beautifully designed export card.
+
+The card should include
+
+Mood title
+
+Current date
+
+Generated poetic quote
+
+Aura title
+
+Color palette
+
+Tiny decorative particles
+
+Soft gradient background
+
+Small MoodBoard AI branding
+
+Design it like a premium Instagram story or Pinterest card.
+
+Include buttons
+
+* Download PNG
+* Copy Image
+* Share
+
+Generate the image entirely in the browser using HTML Canvas or a client-side library.
+
+The exported image should look polished enough to post directly on social media.
+
+---
+
+# 5. Premium Custom Cursor
+
+Replace the default cursor with a fully animated custom cursor.
+
+Desktop only.
+
+Cursor consists of
+
+Outer ring
+
+* smooth trailing animation
+* subtle glow
+
+Inner dot
+
+* follows instantly
+
+Hovering buttons
+
+* cursor expands
+* emits a soft glow
+
+Hovering cards
+
+* cursor gently pulses
+
+Hovering color swatches
+
+* cursor changes to the swatch color
+
+Hovering Generate button
+
+* cursor creates a ripple animation
+
+Hovering links
+
+* magnetic attraction effect
+
+Click
+
+* ripple animation
+
+Idle
+
+* slowly breathes
+
+All cursor movement should use lerp interpolation for buttery smooth motion.
+
+Disable automatically on touch devices.
+
+Respect the user's "prefers-reduced-motion" setting.
+
+---
+
+# 6. Ambient Enhancements
+
+Improve the atmosphere throughout the site.
+
+Add
+
+* animated fog
+* floating dust
+* subtle film grain
+* soft vignette
+* depth blur
+* moving light rays
+* gentle glow bloom
+
+Everything should remain lightweight and maintain smooth performance.
+
+---
+
+# 7. Microinteractions
+
+Enhance every interaction.
+
+Examples
+
+Buttons
+
+* soft scale
+* glow
+
+Cards
+
+* floating hover
+* tilt effect
+
+Palette colors
+
+* liquid fill animation
+
+Aura rings
+
+* animate from 0%
+
+Export card
+
+* fades in elegantly
+
+Input field
+
+* glowing border while typing
+
+Page load
+
+* cinematic fade-in
+
+---
+
+# 8. Performance
+
+Keep the website optimized.
+
+* Use requestAnimationFrame.
+* Pause expensive animations when the tab is inactive.
+* Limit particle counts on lower-end devices.
+* Lazy-load optional assets.
+* Keep animations at 60 FPS whenever possible.
+
+---
+
+# Final Experience
+
+The finished website should feel like an interactive emotional sanctuary.
+
+When a user enters a feeling, the application should gracefully transform into a living cinematic scene that adapts to both the user's mood and the current time of day. The interface should feature a soothing melancholy-inspired palette, elegant glassmorphism, a dynamic aura visualization, a beautiful shareable mood card, and a silky smooth custom cursor. Every interaction should feel polished, immersive, calming, and portfolio-worthy, as if the user has stepped into a beautifully crafted digital dream.

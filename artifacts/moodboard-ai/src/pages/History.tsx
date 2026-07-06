@@ -8,6 +8,7 @@ import {
   useDeleteMoodEntry,
   getGetMoodHistoryQueryKey
 } from '@workspace/api-client-react';
+import { useTimeOfDay } from '@/hooks/useTimeOfDay';
 
 import { Button } from '@/components/ui/button';
 import { ParticleCanvas } from '@/components/ParticleCanvas';
@@ -19,6 +20,7 @@ export default function HistoryPage() {
   
   const { data: history, isLoading } = useGetMoodHistory();
   const deleteEntry = useDeleteMoodEntry();
+  const timeConfig = useTimeOfDay();
 
   const handleDelete = (id: number) => {
     deleteEntry.mutate(
@@ -33,13 +35,17 @@ export default function HistoryPage() {
 
   return (
     <main className="min-h-[100dvh] relative overflow-x-hidden mesh-bg text-foreground selection:bg-primary/30">
-      <ParticleCanvas settings={{
+      <div 
+        className="absolute inset-0 pointer-events-none transition-colors duration-[3000ms]"
+        style={{ backgroundColor: timeConfig.bgOverlay }}
+      />
+      <ParticleCanvas timeConfig={timeConfig} settings={{
         particleCount: 40,
         speed: 0.5,
         glowIntensity: 0.2,
         fogOpacity: 0.5,
         windStrength: 0.2,
-        colorTint: '#2D6A4F' // Moss green for history page
+        colorTint: '#778DA9' // Lavender gray for history page
       }} />
       
       <div className="relative z-10 container mx-auto px-4 py-8 md:py-16 min-h-screen flex flex-col">

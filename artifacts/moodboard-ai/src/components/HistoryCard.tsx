@@ -14,7 +14,8 @@ interface HistoryCardProps {
 export function HistoryCard({ entry, onClick, onDelete, showFull = false }: HistoryCardProps) {
   return (
     <motion.div
-      whileHover={{ y: -4 }}
+      whileHover={{ y: -6, rotateX: 2, rotateY: -2 }}
+      style={{ perspective: 800 }}
       className="glass-card rounded-2xl p-5 cursor-pointer flex flex-col gap-4 relative group"
       onClick={onClick}
     >

@@ -11,6 +11,8 @@ import {
   type MoodResult 
 } from '@workspace/api-client-react';
 
+import { useTimeOfDay } from '@/hooks/useTimeOfDay';
+
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { ParticleCanvas } from '@/components/ParticleCanvas';
@@ -27,6 +29,7 @@ export default function Home() {
   
   const generateMood = useGenerateMood();
   const { data: history } = useGetMoodHistory();
+  const timeConfig = useTimeOfDay();
 
   const handleGenerate = (e?: React.FormEvent) => {
     if (e) e.preventDefault();
@@ -57,8 +60,22 @@ export default function Home() {
   };
 
   return (
-    <main className="min-h-[100dvh] relative overflow-x-hidden mesh-bg text-foreground selection:bg-primary/30">
-      <ParticleCanvas settings={activeResult?.animation} />
+    <motion.main 
+      initial={{ opacity: 0 }} 
+      animate={{ opacity: 1 }} 
+      transition={{ duration: 1.2 }}
+      className="min-h-[100dvh] relative overflow-x-hidden mesh-bg text-foreground selection:bg-primary/30"
+    >
+      <div 
+        className="absolute inset-0 pointer-events-none transition-colors duration-[3000ms]"
+        style={{ backgroundColor: timeConfig.bgOverlay }}
+      />
+      <div className="absolute top-6 left-6 z-50 inline-flex items-center px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-medium text-muted-foreground backdrop-blur-md">
+        <div className="w-2 h-2 rounded-full mr-2" style={{ backgroundColor: timeConfig.particleColorBoost }} />
+        {timeConfig.label}
+      </div>
+
+      <ParticleCanvas settings={activeResult?.animation} timeConfig={timeConfig} />
       <AudioToggle />
       
       <div className="relative z-10 container mx-auto px-4 py-16 md:py-24 flex flex-col items-center justify-start min-h-screen">
@@ -197,6 +214,6 @@ export default function Home() {
           </motion.div>
         )}
       </div>
-    </main>
+    </motion.main>
   );
 }

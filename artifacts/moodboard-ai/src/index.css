@@ -68,50 +68,50 @@
 }
 
 :root {
-  --button-outline: rgba(180, 140, 130, 0.15);
-  --badge-outline: rgba(180, 140, 130, 0.08);
+  --button-outline: rgba(119, 141, 169, 0.15);
+  --badge-outline: rgba(119, 141, 169, 0.08);
 
   --opaque-button-border-intensity: -5;
 
-  --elevate-1: rgba(180, 130, 120, 0.05);
-  --elevate-2: rgba(180, 130, 120, 0.10);
+  --elevate-1: rgba(119, 141, 169, 0.05);
+  --elevate-2: rgba(119, 141, 169, 0.10);
 
-  /* Nude & pastel theme */
-  --background: 35 30% 96%;
-  --foreground: 20 18% 28%;
-  --border: 30 20% 85%;
-  --card: 35 25% 98%;
-  --card-foreground: 20 18% 28%;
-  --card-border: 30 18% 88%;
-  --sidebar: 35 25% 97%;
-  --sidebar-foreground: 20 18% 28%;
-  --sidebar-border: 30 18% 88%;
-  --sidebar-primary: 350 32% 62%;
+  /* Melancholy theme */
+  --background: 216 38% 16%;
+  --foreground: 220 38% 90%;
+  --border: 214 30% 30%;
+  --card: 216 35% 18%;
+  --card-foreground: 220 30% 88%;
+  --card-border: 214 30% 30%;
+  --sidebar: 216 38% 16%;
+  --sidebar-foreground: 220 38% 90%;
+  --sidebar-border: 214 30% 30%;
+  --sidebar-primary: 214 25% 58%;
   --sidebar-primary-foreground: 0 0% 100%;
-  --sidebar-accent: 30 30% 92%;
-  --sidebar-accent-foreground: 20 18% 28%;
-  --sidebar-ring: 350 32% 62%;
-  --popover: 35 25% 98%;
-  --popover-foreground: 20 18% 28%;
-  --popover-border: 30 18% 88%;
-  --primary: 350 32% 62%;
+  --sidebar-accent: 214 28% 38%;
+  --sidebar-accent-foreground: 220 38% 90%;
+  --sidebar-ring: 214 25% 58%;
+  --popover: 216 35% 18%;
+  --popover-foreground: 220 30% 88%;
+  --popover-border: 214 30% 30%;
+  --primary: 214 25% 58%;
   --primary-foreground: 0 0% 100%;
-  --secondary: 30 30% 92%;
-  --secondary-foreground: 20 18% 35%;
-  --muted: 30 20% 91%;
-  --muted-foreground: 20 12% 52%;
-  --accent: 270 22% 80%;
-  --accent-foreground: 270 18% 30%;
-  --destructive: 0 55% 60%;
+  --secondary: 214 28% 36%;
+  --secondary-foreground: 220 38% 88%;
+  --muted: 216 30% 24%;
+  --muted-foreground: 214 20% 65%;
+  --accent: 214 28% 38%;
+  --accent-foreground: 220 38% 90%;
+  --destructive: 0 55% 58%;
   --destructive-foreground: 0 0% 100%;
-  --input: 30 20% 89%;
-  --ring: 350 32% 62%;
+  --input: 216 30% 26%;
+  --ring: 214 25% 58%;
 
-  --chart-1: 350 32% 62%;
-  --chart-2: 25 40% 72%;
-  --chart-3: 270 22% 75%;
-  --chart-4: 160 22% 72%;
-  --chart-5: 200 22% 72%;
+  --chart-1: 214 28% 48%;
+  --chart-2: 216 28% 38%;
+  --chart-3: 214 25% 58%;
+  --chart-4: 216 38% 46%;
+  --chart-5: 220 38% 70%;
 
   --app-font-sans: 'Inter', sans-serif;
   --app-font-serif: 'Playfair Display', serif;
@@ -151,17 +151,16 @@
 
   body {
     @apply font-sans antialiased bg-background text-foreground;
-    /* Optional: custom scrollbar to fit theme */
   }
 }
 
 @layer utilities {
   .glass-card {
-    @apply bg-white/50 backdrop-blur-md border border-rose-100/60 shadow-xl;
+    @apply bg-white/5 backdrop-blur-md border border-white/8 shadow-2xl;
   }
   
   .text-glow {
-    text-shadow: 0 0 20px rgba(210, 150, 150, 0.25);
+    text-shadow: 0 0 30px rgba(119, 141, 169, 0.4);
   }
 
   /* Growth animation */
@@ -186,19 +185,37 @@
   
   /* Mesh Gradient Background */
   .mesh-bg {
-    background-color: hsl(35, 30%, 96%);
+    background-color: hsl(216, 38%, 16%);
     background-image: 
-      radial-gradient(at 0% 0%, hsla(350, 40%, 88%, 0.7) 0px, transparent 50%),
-      radial-gradient(at 100% 0%, hsla(270, 30%, 88%, 0.6) 0px, transparent 50%),
-      radial-gradient(at 100% 100%, hsla(25, 50%, 88%, 0.65) 0px, transparent 50%),
-      radial-gradient(at 0% 100%, hsla(160, 25%, 88%, 0.55) 0px, transparent 50%);
+      radial-gradient(at 0% 0%, hsla(216, 38%, 22%, 0.9) 0px, transparent 50%),
+      radial-gradient(at 100% 0%, hsla(214, 28%, 28%, 0.7) 0px, transparent 50%),
+      radial-gradient(at 100% 100%, hsla(214, 25%, 32%, 0.8) 0px, transparent 50%),
+      radial-gradient(at 0% 100%, hsla(216, 38%, 18%, 0.9) 0px, transparent 50%);
     background-size: 200% 200%;
-    animation: mesh-shift 15s ease infinite alternate;
+    animation: mesh-shift 18s ease infinite alternate;
   }
   
   @keyframes mesh-shift {
     0% { background-position: 0% 0%; }
     50% { background-position: 100% 100%; }
     100% { background-position: 0% 100%; }
+  }
+
+  /* Button scale + glow on hover */
+  button:not([disabled]):hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 18px rgba(119, 141, 169, 0.25);
+    transition: transform 150ms ease, box-shadow 200ms ease;
+  }
+
+  /* Input glow border while focused */
+  input:focus {
+    box-shadow: 0 0 0 1px rgba(119,141,169,0.5), 0 0 20px rgba(119,141,169,0.15);
+  }
+
+  /* Color swatch liquid fill */
+  @keyframes swatch-fill {
+    from { transform: scaleY(0); transform-origin: bottom; }
+    to { transform: scaleY(1); transform-origin: bottom; }
   }
 }
