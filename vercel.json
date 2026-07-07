@@ -2,8 +2,5 @@
   "installCommand": "pnpm install",
   "buildCommand": "pnpm --filter @workspace/moodboard-ai run build:vercel",
   "outputDirectory": "artifacts/moodboard-ai/dist",
-  "framework": null,
-  "rewrites": [
-    { "source": "/api/:path*", "destination": "/api/index" }
-  ]
+  "framework": null
 }
